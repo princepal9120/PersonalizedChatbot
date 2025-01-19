@@ -2,64 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient {
-  animation: gradient 15s ease infinite;
-  background-size: 400% 400%;
-}
-
-
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
-* {
-  font-family: Verdana, Tahoma, sans-serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
+
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
+
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
+
     --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
+
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
+
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
+
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
+
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
@@ -98,6 +66,60 @@ body {
   }
 }
 
+/* @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #13b0f5, #5c27fe, #e70faa, #7000ff);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.grid-background {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -106,3 +128,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
