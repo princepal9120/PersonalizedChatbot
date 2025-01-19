@@ -19,7 +19,7 @@ export default function Home() {
   const [input, setInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
-  const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setInput(event.target.value);
@@ -84,9 +84,8 @@ export default function Home() {
       });
     }
   }, [messages]);
-  // const [messages, setMessages] = useState<Array<{ text: string; isBot: boolean }>>([])
-  // const [input, setInput] = useState("")
-  // const [isLoading, setIsLoading] = useState(false)
+
+
 
   
 
