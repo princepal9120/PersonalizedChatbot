@@ -21,7 +21,7 @@ export default function Home() {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
     if (inputRef.current) {
       inputRef.current.style.height = "inherit";
@@ -63,16 +63,16 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLInputElement>) => {
     setInput("");
     event.preventDefault();
     await sendMessage(input);
   };
 
-  const handleKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      handleSubmit(event);
+      handleSubmit(event as any);
     }
   };
 
