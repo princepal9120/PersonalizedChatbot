@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 Prince’s Internship Experience
     Software Developer Intern
     Company: BlackBytt
-    Duration: July 2024 – September 2024
+    Duration: Oct 2024 – Dec 2024
     Role: Software Developer Intern
   • Proficient in Agile methodologies for project management and iterative development.
   • Skilled in code analysis and debugging to identify and resolve issues efficiently.
