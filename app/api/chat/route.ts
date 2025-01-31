@@ -19,7 +19,8 @@ const db = client.db(`${ASTRA_DB_API_ENDPOINT}`, {
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
-    const latestMessage = messages?.length > 0 ? messages[messages.length - 1].content : "";
+    const latestMessage =
+      messages?.length > 0 ? messages[messages.length - 1].content : "";
 
     let docContext = "";
     const model1 = genAI.getGenerativeModel({ model: "text-embedding-004" });
@@ -29,13 +30,16 @@ export async function POST(req: Request) {
 
     try {
       const collection = await db.collection(`${ASTRA_DB_COLLECTION}`);
-      const cursor = collection.find({}, {
-        sort: {
-          $vector: result.embedding.values,
-        },
-        limit: 10,
-      });
-      
+      const cursor = collection.find(
+        {},
+        {
+          sort: {
+            $vector: result.embedding.values,
+          },
+          limit: 10,
+        }
+      );
+
       const documents = await cursor.toArray();
       const docsMap = documents?.map((doc) => doc.text);
       docContext = JSON.stringify(docsMap);
@@ -48,12 +52,21 @@ export async function POST(req: Request) {
    
 Prince’s Internship Experience
     Software Developer Intern
-    Company: Journey
+    Company: BlackBytt
     Duration: July 2024 – September 2024
     Role: Software Developer Intern
-    Developed the backend infrastructure for the MVP of the Journey platform, focusing on backend logic and   deployment processes.
-    Managed cloud infrastructure using AWS, utilizing Docker for containerization to improve scalability and  performance.
-    Optimized application performance through precise coding techniques, improving response times and overall system efficiency.
+  • Proficient in Agile methodologies for project management and iterative development.
+  • Skilled in code analysis and debugging to identify and resolve issues efficiently.
+  • Designed custom templates based on client needs using Liquid template language.
+  • Developed and maintained custom UI components with HTML, CSS, and JavaScript.
+
+    Problem Setter Freelance
+    Company: Imocha
+    Duration: Aug 2022– Apr 2023
+    Role: Problem Setter Freelance
+  • Developed a wide range of challenging data structure and algorithm problems for technical assessments.
+  • Employed debugging techniques to identify and fix errors, ensuring a bug-free user experience.
+  • Contributed to the creation of high-quality assessment content for technical interviews.  
 
 
 Prince’s Technical Skills
@@ -84,13 +97,13 @@ QUESTION: ${latestMessage}
     return new Response(
       JSON.stringify({
         id: crypto.randomUUID(),
-        content: responseText.replace(/\n/g, '\\n'),  // Preserve newlines by escaping them
-        role: "assistant"
+        content: responseText.replace(/\n/g, "\\n"), // Preserve newlines by escaping them
+        role: "assistant",
       }),
-      { 
-        headers: { 
-          "Content-Type": "application/json"
-        } 
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
   } catch (error) {
@@ -99,11 +112,11 @@ QUESTION: ${latestMessage}
       JSON.stringify({
         id: crypto.randomUUID(),
         content: "Sorry, I encountered an error processing your request.",
-        role: "assistant"
+        role: "assistant",
       }),
-      { 
+      {
         headers: { "Content-Type": "application/json" },
-        status: 500
+        status: 500,
       }
     );
   }
