@@ -24,7 +24,7 @@ const db = client.db(`${ASTRA_DB_API_ENDPOINT}`, {
 
 const myData: string[] = [
   "https://github.com/princepal9120",
-  "https://x.com/Iterate_X",
+  "https://x.com/prince_twets",
   "https://drive.google.com/file/d/19Pu--0GUaPw2FlYsZHRD6ctjOOi9a7oa/view",
   "https://docs.google.com/document/d/1D7znZCeXbn1V2qP_HOGmATY-PC8V-2fZ-zQxje25rWc/edit?usp=sharing"
 ];
